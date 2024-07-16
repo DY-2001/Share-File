@@ -69,10 +69,7 @@ export default function Home() {
                 }}
               />
               <div className="flex space-x-4">
-                <button
-                  onClick={handleUpload}
-                  className="p-2 my-5 bg-white rounded-md w-44 focus:outline-none text-black font-sans font-semibold"
-                >
+                <button onClick={handleUpload} className="button">
                   {uploadState === EUploadState.UPLOADING
                     ? "Uploading..."
                     : "Upload"}
@@ -80,6 +77,7 @@ export default function Home() {
                 <button
                   onClick={handleReUpload}
                   className="p-2 my-5 bg-white rounded-md w-44 focus:outline-none text-black font-sans font-semibold"
+                  disabled={uploadState === EUploadState.UPLOADING}
                 >
                   Re-Upload
                 </button>

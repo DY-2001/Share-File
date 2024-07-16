@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .button {
+        @apply p-2 my-5 bg-white rounded-md w-44 focus:outline-none text-black font-sans font-semibold;
+    }
+}
