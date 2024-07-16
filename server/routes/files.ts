@@ -5,6 +5,8 @@ import File from '../models/File'
 
 const router = express.Router()
 
+import https from 'https'
+
 const storage = multer.diskStorage({})
 
 let upload = multer({ storage })
@@ -61,6 +63,27 @@ router.get('/:id', async (req, res) => {
             sizeInBytes: file.sizeInBytes,
             id: file._id,
         })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: "Server Error!"})
+    }
+})
+
+router.get('/:id/download', async (req, res) => {
+    try {
+        const id = req.params.id
+
+        const file = await File.findById(id);
+        if(!file) {
+            return res.status(404).json({message: "File not found!"})
+        }
+
+        https.get(file.secure_url, (fileStream) => {
+            fileStream.pipe(res)
+        })
+
+        
+        
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Server Error!"})
