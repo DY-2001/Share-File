@@ -27,19 +27,23 @@ router.post('/upload', upload.single("myFile"), async (req, res) => {
 
         const {originalname} = req.file
         const {secure_url, bytes,format} = uploadedFile
-
-        const file = await File.create({
-            filename: originalname,
-            sizeInBytes: bytes,
-            secure_url,
-            format
-        })
+        try {
+            const file = await File.create({
+                filename: originalname,
+                sizeInBytes: bytes,
+                secure_url,
+                format
+            })
+            
+            res.status(200).json({id: file._id, downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${file._id}`})
+        } catch(err) {
+            return res.status(500).json({message: "File not supported!"})
+        }
         
-        res.status(200).json({id: file._id, downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${file._id}`})
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({message: "Server error"})
+        res.status(500).json({message: "Something went wrong!"})
     }
 })
 
