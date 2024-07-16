@@ -113,7 +113,7 @@ const createEmailTemplate = (emailFrom: string, downloadPageLink: string, fileNa
                           <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                             <tbody>
                               <tr>
-                                <td style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; border-radius: 4px; text-align: center; background-color: #FFC26D;" valign="top" align="center" bgcolor="#FFC26D"> <a href=${downloadPageLink} target="_blank" style="border: solid 2px #FFC26D; border-radius: 4px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 16px; font-weight: bold; margin: 0; padding: 12px 24px; text-decoration: none; text-transform: capitalize; background-color: #FFC26D; border-color: #FFC26D; color: #ffffff;">Go to Download Page</a> </td>
+                                <td style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; border-radius: 4px; text-align: center; background-color: #FFC26D;" valign="top" align="center" bgcolor="#FFC26D"> ${downloadPageLink} </td>
                               </tr>
                             </tbody>
                           </table>
