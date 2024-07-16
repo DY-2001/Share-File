@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import DownloadFile from "@components/DownloadFile";
 import { EUploadState } from "libs/types";
+import EmailForm from "@components/EmailForm";
 
 export default function Home() {
   const [file, setFile] = useState<File | undefined>();
@@ -86,8 +87,9 @@ export default function Home() {
           )}
 
         {uploadState === EUploadState.UPLOADED && downloadPageLink && (
-          <div>
+          <div className="flex flex-col items-center justify-center">
             <DownloadFile downloadPageLink={downloadPageLink} />
+            <EmailForm id={id ? id : ""} />
           </div>
         )}
 
