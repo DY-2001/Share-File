@@ -39,7 +39,7 @@ router.post('/upload', upload.single("myFile"), async (req, res) => {
                 format
             })
             
-            res.status(200).json({id: file._id, downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${file._id}`})
+            res.status(200).json({id: file._id, downloadPageLink: `https://share-file-blue.vercel.app/download/${file._id}`})
         } catch(err) {
             return res.status(500).json({message: "File not supported!"})
         }
@@ -112,7 +112,7 @@ router.post("/email", async (req, res) => {
     const {filename, sizeInBytes} = file;
     const fileSize = (Number(sizeInBytes) / (1024 * 1024)).toFixed(2) + "MB"
 
-    const downloadPageLink = `${process.env.API_BASE_ENDPOINT_CLIENT}/download/${id}`
+    const downloadPageLink = `https://share-file-blue.vercel.app/download/${id}`
 
     const mailOptions = {
         from: emailFrom,
