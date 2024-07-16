@@ -2,7 +2,7 @@ import "tailwindcss/tailwind.css";
 import "../../styles/globals.css";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5500";
+axios.defaults.baseURL = "https://share-file-rv8o.onrender.com";
 
 function MyApp({ Component, pageProps }: any) {
   return (

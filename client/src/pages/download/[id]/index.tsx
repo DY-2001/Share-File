@@ -10,7 +10,7 @@ const index: NextPage<{ file: IFile }> = ({
   const handleDownload = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5500/api/files/${id}/download`,
+        `https://share-file-rv8o.onrender.com/api/files/${id}/download`,
         {
           responseType: "blob",
         }
@@ -52,7 +52,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   let file;
   try {
-    const { data } = await axios.get(`http://localhost:5500/api/files/${id}`);
+    const { data } = await axios.get(`https://share-file-rv8o.onrender.com/api/files/${id}`);
     file = data;
   } catch (e) {
     console.log(e);
