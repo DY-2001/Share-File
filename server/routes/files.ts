@@ -54,7 +54,7 @@ router.post('/upload', upload.single("myFile"), async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id
-
+        if (!id.match(/^[0-9a-fA-F]{24}$/)) return;
         const file = await File.findById(id);
         if(!file) {
             return res.status(404).json({message: "File not found!"})
@@ -74,7 +74,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/download', async (req, res) => {
     try {
         const id = req.params.id
-
+        if (!id.match(/^[0-9a-fA-F]{24}$/)) return;
         const file = await File.findById(id);
         if(!file) {
             return res.status(404).json({message: "File not found!"})
@@ -92,7 +92,7 @@ router.get('/:id/download', async (req, res) => {
 
 router.post("/email", async (req, res) => {
     const {id, emailFrom, emailTo} = req.body
-
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) return;
     const file = await File.findById(id);
     if(!file) {
         return res.status(404).json({message: "File not found!"})
